@@ -1,0 +1,96 @@
+mixin fieldsetInput(name, label, placeholder, classes, required, inputClasses)
+  - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.input_text(class=classes)
+    label.cta-form-fieldset-label(for=name)=label
+    input.cta-form-fieldset-input.input(id=name, name=name, type="text", placeholder=placeholder, class=inputClasses)
+
+
+
+mixin fieldsetSelect(name, label, placeholder, classes, required, items)
+  - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.select(class=classes)
+    label.cta-form-fieldset-label(for=name)=label
+    select.cta-form-fieldset-select.input(id=name, name=name)
+      option(value='')=placeholder
+      -if (items)
+        each item, index in items
+          option(value=index)=item
+
+
+mixin fieldsetTextarea(name, label, placeholder, classes, required, inputClasses)
+  - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.textarea(class=classes)
+    label.cta-form-fieldset-label(for=name)=label
+    textarea.cta-form-fieldset-textarea.input(id=name, name=name, placeholder=placeholder)
+
+
+mixin fieldsetCheckboxSingle(name, label, classes, required)
+  - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.checkbox(class=classes)
+    .cta-form-fieldset.fieldset-checkbox.input-button
+      div.cta-form-fieldset-checkbox-box
+      label.cta-form-fieldset-checkbox-label(for=name)=label
+      input.input.checkbox(id=name, name=name type='checkbox')
+
+
+mixin fieldsetCheckbox(name, label, classes, required, items)
+  - if (required) classes = classes + ' required'
+  - classes = classes + ' options_' + items.length
+
+  .cta-form-fieldset.fieldset.checkbox(class=classes)
+    .cta-form-fieldset-label=label
+    each item, index in items
+      - id = name + '_' + index
+      .cta-form-fieldset-checkbox.input-button
+        div.cta-form-fieldset-checkbox-box
+        label.cta-form-fieldset-checkbox-label(for=id)=item
+        input.input.checkbox(id=id, name=name, type='checkbox', val=item)
+
+
+mixin fieldsetRadio(name, label, classes, required, items)
+  - if (required) classes = classes + ' required'
+  - classes = classes + ' options_' + items.length
+
+  .cta-form-fieldset.fieldset.radio(class=classes)
+    .cta-form-fieldset-label=label
+    each item, index in items
+      - id = name + '_' + index
+      .cta-form-fieldset-radio.input-button
+        div.cta-form-fieldset-radio-box
+        label.cta-form-fieldset-radio-label(for=id)=item
+        input.input.radio(id=id, name=name, type='radio', val=item)
+
+
+mixin fieldsetRadioSpecial(name, label, classes, required, items)
+  - if (required) classes = classes + ' required'
+  - classes = classes + ' options_3'
+
+  .cta-form-fieldset.fieldset.radio.radio_special(class=classes)
+    .cta-form-fieldset-label=label
+    each item, index in items
+      - id = name + '_' + index
+      .cta-form-fieldset-radio.input-button
+        div.cta-form-fieldset-radio-box
+        label.cta-form-fieldset-radio-label(for=id)=item
+          .cta-form-fieldset-radio-label-sub=index
+        input.input.radio(id=id, name=name, type='radio', val=item)
+
+
+mixin fieldsetRange(name, label, classes, required)
+  //- - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.range.required(class=classes)
+    .cta-form-fieldset-label=label
+    .cta-form-fieldset-range(class=classes)
+      .cta-form-fieldset-range-start
+      .cta-form-fieldset-range-end
+    input.cta-form-fieldset-input.input(id=name, name=name, type="hidden")
+
+
+
+mixin fieldsetFile(name, label, classes, required, inputClasses)
+  - if (required) classes = classes + ' required'
+  .cta-form-fieldset.fieldset.file(class=classes)
+    label.cta-form-fieldset-label(for=name)=label
+    .cta-form-fieldset-file_wrap
+      input.cta-form-fieldset-file.input(id=name, name=name, type="file", class=inputClasses, accept='.pdf, .doc, .png, .tiff, .jpg, .rtf, .rtfd, .pages, .xls, .csv', multiple='')
+
