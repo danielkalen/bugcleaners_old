@@ -1,4 +1,4 @@
-// var $ = jQuery.noConflict();
+// @codekit-prepend '_plugins/jquery.js'
 
 // @codekit-prepend '_plugins/jquery-cache.js'
 
@@ -11,6 +11,7 @@
 // @codekit-prepend '_parts-global/_helpers.js'
 
 
+
 $window = $$(window);
 
 var	$this,
@@ -21,6 +22,7 @@ var	$this,
 
 
 
+// @codekit-append '_parts-global/header.js'
 
 
 

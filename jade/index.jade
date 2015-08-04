@@ -1,25 +1,27 @@
 doctype html
 html(lang='en-US', itemscope='', itemtype='http://schema.org/WebPage', dir='ltr', prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#')
-    head
-        meta(charset='UTF-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=0')
-        // Begin Meta Data
-        // <link rel="canonical" href="http://getvoip.com/service-quotes">
-        // <meta property="og:url" content="http://getvoip.com/service-quotes">
-        // <link rel="shortcut icon" href="http://getvoip.com/sites/all/themes/gv_blue/favicon.ico" type="image/vnd.microsoft.icon">
-        // <meta property="og:title" content="The Ultimate All-in-one Fitness Device - DovFlex">
-        // <meta property="fb:admins" content="http://www.facebook.com/dovflex">
-        // <meta itemprop="name" content="Business Phone Service Quotes - GetVoIP">
-        // / End Meta data.
-        title The Ultimate All-in-one Fitness Device - DovFlex
-        link(rel='stylesheet', href='css/style.css', type='text/css')
-        script(type='text/javascript', src='http://localhost:48626/takana.js')
-    body
-        #page
-            header#masthead.header(role='banner')
-                .hero
-                nav.nav-second
-            main.main(role='main')
-            footer.footer(role='footer')
-        script(type='text/javascript', src='js/jquery.min.js')
-        script(type='text/javascript', src='js/main.min.js')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=0')
+		//- Begin Meta Data
+		//- link(rel="canonical", href="http://sitename.com")
+		meta(property="og:url", content="http://sitename.com")
+		link(rel="shortcut icon", href="/img/favicon.ico", type="image/x-icon")
+		meta(property="og:title", content="Same-day Pest Control Services 24/7 | BugCleaners")
+		meta(property="fb:admins", content="http://www.facebook.com/sitename")
+		meta(itemprop="name", content="Same-day Pest Control Services 24/7 | BugCleaners")
+		//- End Meta data.
+		title Same-day Pest Control Services 24/7 | BugCleaners
+		link(rel='stylesheet', href='css/style.css', type='text/css')
+		link(rel='stylesheet', href='css/home.css', type='text/css')
+		include ./_parts-global/takana.jade
+	body
+		#page
+			include ./_parts-global/header.jade
+			include ./_parts-home/hero.jade
+			include ./_parts-home/service.jade
+
+			main.main(role='main')
+					
+			include ./_parts-global/footer.jade
+		script(type='text/javascript', src='js/global.min.js')

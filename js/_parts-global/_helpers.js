@@ -6,7 +6,7 @@ function util(){
 	be triggered. The function will be called after it stops being called for
 	N milliseconds. If `immediate` is passed, trigger the function on the
 	leading edge, instead of the trailing.*/
-	this.debounce(func, wait, immediate) {
+	this.debounce = function(func, wait, immediate) {
 		var timeout;
 		return function() {
 			var context = this, args = arguments;
@@ -31,7 +31,7 @@ function util(){
 
 
 	// ==== Once =================================================================================
-	this.once(fn, context) { 
+	this.once = function(fn, context) { 
 		var result;
 
 		return function() { 
@@ -57,7 +57,7 @@ function util(){
 
 
 	// ==== Add style tags =================================================================================
-	var sheet = (function() {
+	this.sheet = (function() {
 		// Create the <style> tag
 		var style = document.createElement('style');
 
@@ -81,27 +81,6 @@ function util(){
 
 
 
-	// ==== Log =================================================================================
-	this.log() {
-	  try {
-	    console.log.apply( console, arguments );
-	  } catch(e) {
-	    try {
-	      opera.postError.apply( opera, arguments );
-	    } catch(e){
-	      alert( Array.prototype.join.call( arguments, " " ) );
-	    }
-	  }
-	}
-
-
-	this.error(msg, alert) {
-		throw Error(msg);
-
-		if (alert) alert(msg);
-	}
-
-
 
 
 
@@ -109,7 +88,7 @@ function util(){
 	// ==== Perf test =================================================================================
 
 
-	this.perfTime(fn, milliSeconds) {
+	this.perfTime = function(fn, milliSeconds) {
 		var startTime = new Date().getTime(),
 			endTime = 0,
 			repeatFunction = true,
@@ -134,7 +113,7 @@ function util(){
 
 	}
 
-	this.perf(fn, times) {
+	this.perf = function(fn, times) {
 		var startTime = new Date().getTime();
 		var i = 0;
 
@@ -161,6 +140,25 @@ function util(){
 
 
 
+// ==== Log =================================================================================
+function log() {
+  try {
+    console.log.apply( console, arguments );
+  } catch(e) {
+    try {
+      opera.postError.apply( opera, arguments );
+    } catch(e){
+      alert( Array.prototype.join.call( arguments, " " ) );
+    }
+  }
+}
+
+
+function error(msg, alert) {
+	throw Error(msg);
+
+	if (alert) alert(msg);
+}
 
 
 

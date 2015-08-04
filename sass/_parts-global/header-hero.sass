@@ -1,0 +1,111 @@
+.hero
+	position: relative
+	height: 500px
+	width: 100%
+	background-image: url(../img/img-banner.jpg)
+	background-position: 50% 50%
+	background-size: cover
+
+	+max(1400)
+		background-image: url(../img/img-banner-medium.jpg)
+	+max(1024)
+		height: 380px
+	+max(736)
+		background-image: url(../img/img-banner-small.jpg)
+		height: 340px
+		
+	&:after // Overlay
+		content: ''
+		position: absolute
+		z-index: 1
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: $black
+		opacity: .9
+
+	
+
+
+	&-innerwrap
+		position: absolute
+		z-index: 2
+		+valign(54%)
+		width: 100%
+
+		+max(736)
+			top: 52%
+
+
+	
+
+	&-title
+		width: 90%
+		max-width: 775px
+		+center
+		font-size: 44px
+		text-align: center
+		color: white
+		line-height: 1.25
+
+		+max(1024)
+			font-size: 38px
+		+max(736)
+			// font-size: 34px
+			font-size: 5.11vw
+		+max(520)
+			font-size: 6.9vw
+		+max(350)
+			font-size: 8.3vw
+
+		&-highlight
+			color: $primary
+
+	&-button
+		position: relative
+		display: block
+		width: 180px
+		height: 50px
+		+center(52px)
+		background-color: transparent
+		border: 2px solid $primary
+		border-radius: 3px
+		box-sizing: border-box
+		cursor: pointer
+		transition: background-color 0.15s
+
+		+max(1024)
+			margin-top: 46px
+
+		+max(736)
+			width: 160px
+			height: 46px
+			margin-top: 40px
+
+
+		&-text
+			position: absolute
+			+valign
+			display: block
+			width: 100%
+			line-height: 1
+			text-transform: uppercase
+			font-family: proxima
+			font-size: 15px
+			font-weight: 700
+			color: $primary
+			letter-spacing: .4px
+			text-align: center
+			transition: color 0.15s
+			+user-select(none)
+
+			+max(736)
+				font-size: 14px
+
+
+		&:hover
+			background-color: $primary
+
+		&:hover &-text
+			color: white
