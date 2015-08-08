@@ -1,3 +1,137 @@
 .service
-	height: 550px
+	height: 350px
+	padding: 100px 0
 	background-color: $white
+	// box-sizing: border-box
+
+	+max(736)
+		padding: 45px 0
+		height: auto
+
+	&-innerwrap
+		position: relative
+		max-width: 1086px
+		width: 100%
+		height: 100%
+		+center
+		padding: 0 20px
+		box-sizing: border-box
+		+clearfix
+
+		&:after // Divider
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			+center
+			width: 2px
+			height: 100%
+			background-color: $divider
+
+	&-item
+		position: relative
+		display: block
+		color: $black
+		float: left
+		width: perc(522, 1046)
+		padding: 20px 95px
+		box-sizing: border-box
+		cursor: pointer
+
+		+max(920)
+			padding: 20px 45px
+		+max(768)
+			padding: 20px 35px
+		+max(736)
+			float: none
+			width: 100%
+			max-width: 370px
+			+center
+			padding: 20px 20px 40px
+
+		&-icon
+			position: relative
+			overflow: hidden
+			+size(140)
+			+center
+			border: 5px solid $grey-lighter
+			border-radius: 50%
+			box-sizing: border-box
+			transition: all 0.225s
+
+			&-img
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background-size: cover
+
+				.residential &
+					background-image: url(../img/img-residential.jpg)
+				.commercial &
+					background-image: url(../img/img-commercial.jpg)
+
+
+			&:before  // Black Overlay
+				content: ''
+				position: absolute
+				z-index: 2
+				top: 0
+				right: 0
+				width: 100%
+				height: 100%
+				background-color: black
+				opacity: 0
+				transition: opacity 0.225s
+
+			&:after  // Arrow Icon
+				+icon('b')
+				position: absolute
+				z-index: 3
+				+valign
+				+transform(translateY(-50%) translateX(-15%))
+				width: 100%
+				font-size: 31px
+				text-align: center
+				color: $primary
+				opacity: 0
+				transition: all 0.225s
+
+		&:hover &-icon
+
+			&-img
+				filter: gray
+				filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale")
+				filter: grayscale(100%)
+				-webkit-filter: grayscale(100%)
+
+			&:before
+				opacity: .7
+
+			&:after
+				+transform(translateY(-50%) translateX(0))
+				opacity: 1
+
+
+
+
+
+
+
+		&-title
+			margin: 22px 0 16px
+			font-weight: 500
+			font-size: 28px
+			line-height: 1
+			text-align: center
+			&-highlight
+				color: $primary
+
+		&-content
+			line-height: 1.5
+			text-align: center
+
+			.commercial &
+				width: 96%
+				+center
