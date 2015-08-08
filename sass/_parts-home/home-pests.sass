@@ -1,0 +1,95 @@
+.pests
+	position: relative
+	padding: 54px 0
+	background-color: $subwhite
+	border-top: 2px solid $divider
+	border-bottom: 2px solid $divider
+	box-sizing: border-box
+
+	&-title
+		line-height: 1
+		font-size: 32px
+		letter-spacing: .4px
+		color: $grey-mid
+		text-align: center
+		+max(736)
+			max-width: 80%
+			line-height: 1.2
+			font-weight: 500
+			+center
+		+max(400)
+			max-width: 90%
+		+max(350)
+			font-size: 28px
+
+	&-list
+		width: 100%
+		max-width: 980px
+		+center(50px)
+		+clearfix
+		+max(736)
+			max-width: 420px
+			margin-top: 15px
+		+max(400)
+			max-width: 250px
+
+		&-item
+			position: relative
+			float: left
+			width: perc(140, 980)
+			text-align: center
+			+max(736)
+				width: perc(140, 420)
+				margin-top: 25px
+				&:last-child
+					display: none
+			+max(400)
+				width: perc(140, 280)
+
+			&-name
+				font-family: proxima
+				font-weight: 700
+				font-size: 16px
+				text-transform: uppercase
+				letter-spacing: .4px
+				color: $grey-mid
+				+max(768)
+					font-size: 15px
+
+			&-icon
+				position: relative
+				+size(70)
+				+center(0, 10px)
+				border: 3px solid $grey-mid-light
+				border-radius: 50%
+				box-sizing: border-box
+
+				&:after
+					position: absolute
+					+valign
+					width: 100%
+					display: block
+					text-align: center
+					color: $grey-mid-light
+
+					.roaches &
+						+icon('m')
+						font-size: 44px
+					.bed_bugs &
+						+icon('e')
+						font-size: 34px
+					.rodents &
+						+icon('n')
+						font-size: 43px
+					.termites &
+						+icon('p')
+						font-size: 32px
+					.ants &
+						+icon('a')
+						font-size: 31px
+					.mosquitos &
+						+icon('g')
+						font-size: 38px
+					.others &
+						+icon('h')
+						font-size: 41px
