@@ -25,6 +25,6 @@
 
 (function(){ // Get Quote button click
 	$$('.header-nav-item.button, .hero-button').on('click', function(){
-		$$('html, body').animate({scrollTop: $$('#cta').offset().top}, 500);
+		$$('html, body').animate({scrollTop: $$('.cta').offset().top}, 500);
 	});
 }());

@@ -1,16 +1,17 @@
-$.fn.formPrepare.inputField = function($field) {
-	if ( $field.hasClass('required') ) {
-		$field.find('.input').not('.phone, .email, .cardcvc, .carddate').on('change keydown', function(){
-			if ( $(this).val() === "" || $(this).val() === null) {
-				makeInvalid($(this).parents('.fieldset'));
+Form.prototype.Prepare.inputField = function($field) {
+	if ( $field.hasClass('required') || $field.find('.input').hasClass('required') ) {
+		$field.find('.input').not('.phone, .email, .cardcvc, .carddate').on('change keyup', function(){
+			var $this = $(this);
+			if ( $this.val() === "" || $this.val() === null) {
+				makeInvalid($this.parents('.fieldset'));
 			} else{
-				makeValid($(this).parents('.fieldset'));
+				makeValid($this.parents('.fieldset'));
 			}
 		});
 	} else {
 		$field.addClass('valid');
 	}
-}
+};
 
 
 
@@ -20,17 +21,18 @@ $.fn.formPrepare.inputField = function($field) {
 
 
 
-$.fn.formPrepare.emailField = function($field) {
-	$field.on('change keydown', function(){
+Form.prototype.Prepare.emailField = function($field) {
+	$field.on('change keyup', function(){
+		var $this = $(this);
 	    var email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 
-		if ( $(this).val() === "" || !email.test($(this).val()) ) {
-			makeInvalid($(this).parents('.fieldset'));
+		if ( $this.val() === "" || !email.test($this.val()) ) {
+			makeInvalid($this.parents('.fieldset'));
 		} else {
-			makeValid($(this).parents('.fieldset'));
+			makeValid($this.parents('.fieldset'));
 		}
 	});
-}
+};
 
 
 
@@ -40,7 +42,7 @@ $.fn.formPrepare.emailField = function($field) {
 
 
 
-$.fn.formPrepare.checkboxField = function($field) {
+Form.prototype.Prepare.checkboxField = function($field) {
 	$field.find('.input-button').click(function(){
 		var $this = $(this);
 
@@ -59,14 +61,15 @@ $.fn.formPrepare.checkboxField = function($field) {
 			}
 		}
 	});
-	$field.find('label').click(function(){
+	$field.find('label').click(function(e){
+		e.preventDefault();
 		$this.parent().trigger('click');
 	});
-}
+};
 
 
 
-$.fn.formPrepare.radioField = function($field) {
+Form.prototype.Prepare.radioField = function($field) {
 	$field.find('.input-button').click(function(){
 		var $this = $(this);
 
@@ -90,7 +93,7 @@ function checkOn($el) {
 function checkOff($el) {
 	$el.removeClass('checked');
 	$el.find('.input').prop('checked', false);
-}
+};
 
 
 
@@ -98,7 +101,7 @@ function checkOff($el) {
 
 
 
-$.fn.formPrepare.numberField = function($field) {
+Form.prototype.Prepare.numberField = function($field) {
 	$field.keydown(function (event) {
 		if (!event.ctrlKey && !event.metaKey) {
             if( !normalKeycodes(event) ) {
@@ -108,11 +111,13 @@ $.fn.formPrepare.numberField = function($field) {
 	});
 
 	if ( $field.hasClass('phone') ) {
-		$field.change(function(){
-			if ( $(this).val() === "" || $(this).val().length < 7 ) {
-				makeInvalid($(this).parents('.fieldset'));
+		$field.on('change keyup', function(){
+			var $this = $(this);
+
+			if ( $this.val() === "" || $this.val().length < 7 ) {
+				makeInvalid($this.parents('.fieldset'));
 			} else {
-				makeValid($(this).parents('.fieldset'));
+				makeValid($this.parents('.fieldset'));
 			}
 		});
 	}
@@ -204,4 +209,4 @@ $.fn.formPrepare.numberField = function($field) {
 
 		});
 	}
-}
+};

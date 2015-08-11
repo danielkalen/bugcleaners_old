@@ -1,6 +1,7 @@
 .footer
 	padding: 28px 0 22px
-	background-color: #383737
+	// background-color: #383737
+	background-color: $black
 	box-sizing: border-box
 
 	&-wrap
@@ -18,7 +19,7 @@
 			float: right
 			+clearfix
 
-		+m(768)
+		+max(768)
 
 			&-left
 				float: none
@@ -41,7 +42,7 @@
 			// float: left
 			display: inline-block
 
-			+m(1024)
+			+max(1024)
 				font-size: 14px
 
 			&:nth-child(1)
@@ -50,10 +51,10 @@
 			&-link
 				color: white
 		
-		+m(768)
+		+max(768)
 			text-align: center
 
-		+m(414)
+		+max(420)
 			max-width: 340px
 			+center
 
@@ -70,15 +71,15 @@
 		font-weight: 500
 		opacity: .5
 
-		+m(920)
+		+max(920)
 			float: none
 			text-align: right
 
-		+m(768)
+		+max(768)
 			margin: 16px 0 0
 			text-align: center
 
-		+m(414)
+		+max(420)
 			margin: 35px 0 0
 
 
@@ -86,6 +87,13 @@
 		float: left
 		margin-left: 6px
 		+clearfix
+		+max(920)
+			float: right
+			margin: 10px 0 0
+		+max(768)
+			float: none
+			text-align: center
+
 
 		&-item
 			float: left
@@ -93,6 +101,10 @@
 			font-size: 15px
 			opacity: .5
 			transition: opacity 0.2s
+			+max(768)
+				float: none
+				display: inline-block
+				margin: 0 10px
 
 			&:hover
 				opacity: 1
@@ -122,14 +134,3 @@
 					+icon('u')
 
 
-		+m(920)
-			float: right
-			margin: 10px 0 0
-
-		+m(768)
-			float: none
-			width: 190px
-			+center(10px, 0)
-
-			&-item:nth-child(1)
-				margin-left: 0

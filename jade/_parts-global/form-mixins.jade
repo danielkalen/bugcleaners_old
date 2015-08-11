@@ -1,27 +1,27 @@
-mixin fieldsetInput(name, label, placeholder, classes, required, inputClasses)
+mixin fieldsetInput(name, label, classes, required, inputClasses)
   - if (required) classes = classes + ' required'
   .cta-form-fieldset.fieldset.input_text(class=classes)
     label.cta-form-fieldset-label(for=name)=label
-    input.cta-form-fieldset-input.input(id=name, name=name, type="text", placeholder=placeholder, class=inputClasses)
+    input.cta-form-fieldset-input.input(id=name, name=name, type="text", placeholder=label, class=inputClasses)
 
 
 
-mixin fieldsetSelect(name, label, placeholder, classes, required, items)
+mixin fieldsetSelect(name, label, classes, required, items)
   - if (required) classes = classes + ' required'
   .cta-form-fieldset.fieldset.select(class=classes)
     label.cta-form-fieldset-label(for=name)=label
     select.cta-form-fieldset-select.input(id=name, name=name)
-      option(value='')=placeholder
+      option(value='')=label
       -if (items)
         each item, index in items
           option(value=index)=item
 
 
-mixin fieldsetTextarea(name, label, placeholder, classes, required, inputClasses)
+mixin fieldsetTextarea(name, label, classes, required, inputClasses)
   - if (required) classes = classes + ' required'
   .cta-form-fieldset.fieldset.textarea(class=classes)
     label.cta-form-fieldset-label(for=name)=label
-    textarea.cta-form-fieldset-textarea.input(id=name, name=name, placeholder=placeholder)
+    textarea.cta-form-fieldset-textarea.input(id=name, name=name, placeholder=label)
 
 
 mixin fieldsetCheckboxSingle(name, label, classes, required)
